@@ -8,13 +8,33 @@
         android:layout_margin="8dp"
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp"
-        app:cardMaxElevation="4dp"
-        app:contentPadding="16dp">
+        app:cardMaxElevation="4dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_complexity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:text="@{@string/complexity_label(questionEntity.complexity)}"
+            android:visibility="@{questionEntity.complexity != null ? View.VISIBLE : View.GONE}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_theme"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:text="@{@string/theme_label(questionEntity.themenumber)}"
+            android:visibility="@{questionEntity.themenumber != null ? View.VISIBLE : View.GONE}" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="16dp">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_question"
@@ -37,7 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:background="@drawable/ring"
+                    android:background="@{questionEntity.answer == 1 ? @drawable/ring_green : @drawable/ring_red}"
                     android:text="1"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/list_digit_size"
@@ -71,7 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:background="@drawable/ring"
+                    android:background="@{questionEntity.answer == 2 ? @drawable/ring_green : @drawable/ring_red}"
                     android:text="2"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/list_digit_size"
@@ -103,7 +123,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:background="@drawable/ring"
+                    android:background="@{questionEntity.answer == 3 ? @drawable/ring_green : @drawable/ring_red}"
                     android:text="3"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/list_digit_size"
@@ -135,7 +155,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:background="@drawable/ring"
+                    android:background="@{questionEntity.answer == 4 ? @drawable/ring_green : @drawable/ring_red}"
                     android:text="4"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/list_digit_size"
@@ -166,7 +186,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:background="@drawable/ring"
+                    android:background="@{questionEntity.answer == 5 ? @drawable/ring_green : @drawable/ring_red}"
                     android:text="5"
                     android:textColor="@android:color/white"
                     android:textSize="@dimen/list_digit_size"
@@ -190,7 +210,9 @@
 
 
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="questionEntity"
             type="com.wishnewjam.radiologytest.db.QuestionsEntity" />
