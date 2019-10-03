@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragment_main">
+
+    <fragment
+        android:id="@+id/fragment_main"
+        android:name="com.wishnewjam.radiologytest.MainFragment"
+        android:label="Main">
+        <action
+            android:id="@+id/action_mainFragment_to_QuestionsList"
+            app:destination="@id/fragment_questions_list" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragment_questions_list"
+        android:name="com.wishnewjam.radiologytest.QuestionsListFragment"
+        android:label="QuestionsList">
+    </fragment>
+
+    <!--    <fragment-->
+    <!--        android:id="@+id/fragment_pushup"-->
+    <!--        android:name="com.wishnewjam.sfw.PushUpFragment"-->
+    <!--        android:label="PushUps">-->
+    <!--        <argument-->
+    <!--            android:name="trainType"-->
+    <!--            app:argType="com.wishnewjam.sfw.data.TrainProcess" />-->
+
+    <!--        &lt;!&ndash;<action&ndash;&gt;-->
+    <!--        &lt;!&ndash;android:id="@+id/action_navFragment_toBanner"&ndash;&gt;-->
+    <!--        &lt;!&ndash;app:destination="@id/banner_fragment" />&ndash;&gt;-->
+    <!--    </fragment>-->
+
+
+</navigation>

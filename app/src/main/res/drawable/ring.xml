@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/selectable_kachel_shape">
+        <shape
+            android:innerRadius="0dp"
+            android:shape="ring"
+            android:thicknessRatio="2"
+            android:useLevel="false">
+            <!--<solid android:color="#ff00ffff"/>-->
+            <gradient
+                android:centerColor="#FFFFFF"
+                android:endColor="#FFFFFF"
+                android:startColor="#FFFFFF"
+                android:type="sweep" />
+        </shape>
+    </item>
+    <item>
+        <shape
+            android:innerRadius="0dp"
+            android:shape="ring"
+            android:thicknessRatio="2.2"
+            android:useLevel="false">
+
+            <solid android:color="#ff0000" />
+            <padding
+                android:bottom="16dp"
+                android:left="16dp"
+                android:right="16dp"
+                android:top="16dp" />
+
+        </shape>
+    </item>
+</layer-list>

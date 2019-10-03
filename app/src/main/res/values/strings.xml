@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Radiology Test</string>
+    <string name="questions_list">Questions list</string>
+</resources>
