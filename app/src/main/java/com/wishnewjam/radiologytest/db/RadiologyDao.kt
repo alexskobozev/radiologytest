@@ -13,6 +13,9 @@ interface RadiologyDao {
     @Query("SELECT * FROM questionsentity ORDER BY rowId")
     fun getAll(): LiveData<List<QuestionsEntity>>
 
+    @Query("SELECT * FROM questionsentity WHERE question LIKE :search")
+    fun getSearch(search: String): LiveData<List<QuestionsEntity>>
+
     @Insert
     fun insertAll(vararg questionsEntity: QuestionsEntity)
 

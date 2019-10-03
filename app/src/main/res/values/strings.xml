@@ -3,4 +3,6 @@
     <string name="questions_list">Questions list</string>
     <string name="complexity_label">Complexity: %1$s</string>
     <string name="theme_label">Theme number: %1$s</string>
+    <string name="search">Search</string>
+    <string name="title_questions_list">Questions list</string>
 </resources>

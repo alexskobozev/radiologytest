@@ -5,4 +5,8 @@
     <dimen name="list_digit_size">22sp</dimen>
     <dimen name="list_question_text_size">18sp</dimen>
     <dimen name="list_answer_text_size">16sp</dimen>
+
+    <dimen name="first_keyline">16dp</dimen>
+    <dimen name="second_keyline">72dp</dimen>
+    <dimen name="toolbar_horizontal_padding">4dp</dimen>
 </resources>

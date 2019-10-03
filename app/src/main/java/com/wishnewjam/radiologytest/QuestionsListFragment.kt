@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -34,19 +35,41 @@ class QuestionsListFragment : Fragment() {
         val binding: FragmentQuestionslistBinding =
                 DataBindingUtil.inflate(inflater, R.layout.fragment_questionslist, container, false)
         val rootView = binding.root
-
         registerNavigation()
         binding.viewModel = viewModel
         val adapter = QuestionsListAdapter()
         rootView.rv_questions.adapter = adapter
-        viewModel.allQuestions.observe(this, Observer<List<QuestionsEntity>> { it ->
+        viewModel.questions.observe(this, Observer<List<QuestionsEntity>> { it ->
             it?.let {
                 adapter.questions = it
             }
         })
+        (requireActivity() as AppCompatActivity).setSupportActionBar(rootView.toolbar_questionsList)
+        rootView.search_view.isSubmitButtonEnabled = true
+        rootView.search_view.setOnQueryTextListener(object :
+                androidx.appcompat.widget.SearchView.OnQueryTextListener {
 
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                viewModel.searchForQuestion(query)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                viewModel.searchForQuestion(newText)
+                return true
+            }
+
+        })
         return rootView
     }
+
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        inflater.inflate(R.menu.questions_list, menu)
+//        super.onCreateOptionsMenu(menu, inflater)
+//
+
+//
+//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

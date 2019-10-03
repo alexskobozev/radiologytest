@@ -6,6 +6,8 @@ class QuestionsRepository private constructor(private val radiologyDao: Radiolog
 
     fun getAllQuestions() = radiologyDao.getAll()
 
+    fun getSearchQuestions(search: String) = radiologyDao.getSearch(search)
+
     companion object {
         @Volatile
         private var instance: QuestionsRepository? = null
