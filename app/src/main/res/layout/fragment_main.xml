@@ -9,7 +9,7 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_0_pushups"
+            android:id="@+id/btn_go_questions_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:onClick="@{() -> viewModel.setNewDestination(questionsListDirection.getActionId())}"
@@ -19,6 +19,19 @@
             app:layout_constraintHeight_percent="0.25"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_go_quiz_settings"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:onClick="@{() -> viewModel.setNewDestination(quizSettingsDirection.getActionId())}"
+            android:text="@string/go_with_options"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_go_questions_list" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -30,6 +43,10 @@
 
         <variable
             name="questionsListDirection"
+            type="androidx.navigation.NavDirections" />
+
+        <variable
+            name="quizSettingsDirection"
             type="androidx.navigation.NavDirections" />
     </data>
 

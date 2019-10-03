@@ -6,18 +6,26 @@
 
     <fragment
         android:id="@+id/fragment_main"
-        android:name="com.wishnewjam.radiologytest.MainFragment"
+        android:name="com.wishnewjam.radiologytest.ui.MainFragment"
         android:label="Main">
         <action
             android:id="@+id/action_mainFragment_to_QuestionsList"
             app:destination="@id/fragment_questions_list" />
+
+        <action
+            android:id="@+id/action_mainFragment_to_QuizSettings"
+            app:destination="@id/fragment_quiz_settings" />
     </fragment>
 
     <fragment
         android:id="@+id/fragment_questions_list"
-        android:name="com.wishnewjam.radiologytest.QuestionsListFragment"
-        android:label="QuestionsList">
-    </fragment>
+        android:name="com.wishnewjam.radiologytest.ui.QuestionsListFragment"
+        android:label="QuestionsList" />
+
+    <fragment
+        android:id="@+id/fragment_quiz_settings"
+        android:name="com.wishnewjam.radiologytest.ui.QuizSettingsFragment"
+        android:label="QuizSettings" />
 
     <!--    <fragment-->
     <!--        android:id="@+id/fragment_pushup"-->

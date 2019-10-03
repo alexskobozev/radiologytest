@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.wishnewjam.radiologytest.db.QuestionsEntity
+import com.wishnewjam.radiologytest.ui.QuestionsListViewHolder
 
 class QuestionsListAdapter : RecyclerView.Adapter<QuestionsListViewHolder>() {
 

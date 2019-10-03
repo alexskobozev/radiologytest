@@ -5,4 +5,5 @@
     <string name="theme_label">Theme number: %1$s</string>
     <string name="search">Search</string>
     <string name="title_questions_list">Questions list</string>
+    <string name="go_with_options">Options show</string>
 </resources>

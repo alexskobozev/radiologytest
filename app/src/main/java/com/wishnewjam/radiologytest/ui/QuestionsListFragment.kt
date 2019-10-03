@@ -1,6 +1,6 @@
 @file:Suppress("UnusedImport")
 
-package com.wishnewjam.radiologytest
+package com.wishnewjam.radiologytest.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,6 +13,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import com.wishnewjam.radiologytest.QuestionsListAdapter
+import com.wishnewjam.radiologytest.R
 import com.wishnewjam.radiologytest.databinding.FragmentQuestionslistBinding
 import com.wishnewjam.radiologytest.db.QuestionsEntity
 import com.wishnewjam.radiologytest.utilities.EventListener
@@ -33,7 +35,8 @@ class QuestionsListFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         val binding: FragmentQuestionslistBinding =
-                DataBindingUtil.inflate(inflater, R.layout.fragment_questionslist, container, false)
+                DataBindingUtil.inflate(inflater,
+                        R.layout.fragment_questionslist, container, false)
         val rootView = binding.root
         registerNavigation()
         binding.viewModel = viewModel
@@ -45,7 +48,6 @@ class QuestionsListFragment : Fragment() {
             }
         })
         (requireActivity() as AppCompatActivity).setSupportActionBar(rootView.toolbar_questionsList)
-        rootView.search_view.isSubmitButtonEnabled = true
         rootView.search_view.setOnQueryTextListener(object :
                 androidx.appcompat.widget.SearchView.OnQueryTextListener {
 
@@ -62,14 +64,6 @@ class QuestionsListFragment : Fragment() {
         })
         return rootView
     }
-
-//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-//        inflater.inflate(R.menu.questions_list, menu)
-//        super.onCreateOptionsMenu(menu, inflater)
-//
-
-//
-//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

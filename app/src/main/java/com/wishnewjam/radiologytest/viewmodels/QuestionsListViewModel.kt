@@ -1,6 +1,5 @@
 package com.wishnewjam.radiologytest.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -23,10 +22,6 @@ class QuestionsListViewModel(private val trainRepository: QuestionsRepository) :
         else {
             trainRepository.getSearchQuestions("%$input%")
         }
-    }
-
-    init {
-        Log.d("Some", "Some some")
     }
 
     @ExperimentalCoroutinesApi
