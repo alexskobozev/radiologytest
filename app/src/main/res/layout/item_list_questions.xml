@@ -9,186 +9,188 @@
         app:cardCornerRadius="4dp"
         app:cardElevation="4dp"
         app:cardMaxElevation="4dp"
-        app:contentPadding="8dp">
+        app:contentPadding="16dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_question"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{questionEntity.question}"
                 android:textColor="@android:color/black"
-                android:textSize="18sp"
-                app:constraint_referenced_ids="num1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="@dimen/list_question_text_size" />
 
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/num1"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/ring"
-                android:text="1"
-                android:textColor="@android:color/white"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_question" />
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="@{questionEntity.var1 != null ? View.VISIBLE : View.GONE}">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/num2"
-                android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/num1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/ring"
+                    android:text="1"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/list_digit_size"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_question" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_ans1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/list_text_start_margin"
+                    android:text="@{questionEntity.var1}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/list_answer_text_size" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ring"
-                android:text="2"
-                android:textColor="@android:color/white"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/barrierHorizontal1" />
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="@{questionEntity.var2 != null ? View.VISIBLE : View.GONE}">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/num3"
-                android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/num2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/ring"
+                    android:text="2"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/list_digit_size"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_ans2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+
+                    android:layout_marginStart="@dimen/list_text_start_margin"
+                    android:text="@{questionEntity.var2}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/list_answer_text_size" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ring"
-                android:text="3"
-                android:textColor="@android:color/white"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/barrierHorizontal2" />
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="@{questionEntity.var3 != null ? View.VISIBLE : View.GONE}">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/num4"
-                android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/num3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/ring"
+                    android:text="3"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/list_digit_size"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_ans3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+
+                    android:layout_marginStart="@dimen/list_text_start_margin"
+                    android:text="@{questionEntity.var3}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/list_answer_text_size"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ring"
-                android:text="4"
-                android:textColor="@android:color/white"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/barrierHorizontal3" />
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="@{questionEntity.var4 != null ? View.VISIBLE : View.GONE}">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/num5"
-                android:layout_width="wrap_content"
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/num4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/ring"
+                    android:text="4"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/list_digit_size"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_ans4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/list_text_start_margin"
+                    android:text="@{questionEntity.var4}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/list_answer_text_size" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ring"
-                android:text="5"
-                android:textColor="@android:color/white"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/barrierHorizontal4" />
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="@{questionEntity.var5 != null ? View.VISIBLE : View.GONE}">
 
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/barrierVertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="end"
-                app:constraint_referenced_ids="num1,num2,num3" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_ans1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@{questionEntity.var1}"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/barrierVertical"
-                app:layout_constraintTop_toBottomOf="@+id/tv_question" />
-
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/barrierHorizontal1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="bottom"
-                app:constraint_referenced_ids="num1,tv_ans1" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/num5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/ring"
+                    android:text="5"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/list_digit_size"
+                    android:textStyle="bold" />
 
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_ans2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@{questionEntity.var2}"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/barrierVertical"
-                app:layout_constraintTop_toBottomOf="@+id/barrierHorizontal1" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_ans5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/list_text_start_margin"
+                    android:text="@{questionEntity.var5}"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp" />
 
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/barrierHorizontal2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="bottom"
-                app:constraint_referenced_ids="num2,tv_ans2" />
+            </LinearLayout>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_ans3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@{questionEntity.var3}"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/barrierVertical"
-                app:layout_constraintTop_toBottomOf="@+id/barrierHorizontal2" />
-
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/barrierHorizontal3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="bottom"
-                app:constraint_referenced_ids="num3,tv_ans3" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_ans4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@{questionEntity.var4}"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/barrierVertical"
-                app:layout_constraintTop_toBottomOf="@+id/barrierHorizontal3" />
-
-            <androidx.constraintlayout.widget.Barrier
-                android:id="@+id/barrierHorizontal4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:barrierDirection="bottom"
-                app:constraint_referenced_ids="num4,tv_ans4" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_ans5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="@{questionEntity.var5}"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/barrierVertical"
-                app:layout_constraintTop_toBottomOf="@+id/barrierHorizontal4" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
 
     <data>
-
+        <import type="android.view.View"/>
         <variable
             name="questionEntity"
             type="com.wishnewjam.radiologytest.db.QuestionsEntity" />

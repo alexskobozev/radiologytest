@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="padding">16dp</dimen>
+    <dimen name="list_text_start_margin">8dp</dimen>
+    <dimen name="list_digit_size">22sp</dimen>
+    <dimen name="list_question_text_size">18sp</dimen>
+    <dimen name="list_answer_text_size">16sp</dimen>
 </resources>
