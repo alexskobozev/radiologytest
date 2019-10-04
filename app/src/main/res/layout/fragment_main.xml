@@ -25,7 +25,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:onClick="@{() -> viewModel.setNewDestination(quizSettingsDirection.getActionId())}"
-            android:text="@string/go_with_options"
+            android:text="@string/title_quiz_settings"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.25"

@@ -7,8 +7,11 @@ import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.wishnewjam.radiologytest.R
 import com.wishnewjam.radiologytest.ui.settings.Param.Companion.TYPE_DIVIDER
+import com.wishnewjam.radiologytest.viewmodels.QuizSettingsViewModel
+import kotlinx.android.synthetic.main.item_list_checkmark.view.*
 
-class CheckmarksAdapter : RecyclerView.Adapter<CheckmarksViewHolder>() {
+class CheckmarksAdapter(val viewModel: QuizSettingsViewModel) :
+        RecyclerView.Adapter<CheckmarksViewHolder>() {
 
     var checkBoxes: List<Param> = emptyList()
         set(value) {
@@ -40,5 +43,11 @@ class CheckmarksAdapter : RecyclerView.Adapter<CheckmarksViewHolder>() {
 
     override fun onBindViewHolder(holder: CheckmarksViewHolder, position: Int) {
         holder.bind(checkBoxes[position])
+        if (getItemViewType(position) != TYPE_DIVIDER) {
+            holder.itemView.item_checkbox.setOnCheckedChangeListener { buttonView, isChecked ->
+                checkBoxes[position].checked = isChecked
+                viewModel.setParamsForNavigation(checkBoxes)
+            }
+        }
     }
 }

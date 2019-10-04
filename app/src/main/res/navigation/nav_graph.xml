@@ -20,12 +20,28 @@
     <fragment
         android:id="@+id/fragment_questions_list"
         android:name="com.wishnewjam.radiologytest.ui.list.QuestionsListFragment"
-        android:label="QuestionsList" />
+        android:label="QuestionsList">
+        <argument
+            android:name="paramsList"
+            android:defaultValue="@null"
+            app:argType="com.wishnewjam.radiologytest.ui.settings.Params"
+            app:nullable="true" />
+    </fragment>
 
     <fragment
         android:id="@+id/fragment_quiz_settings"
         android:name="com.wishnewjam.radiologytest.ui.settings.QuizSettingsFragment"
-        android:label="QuizSettings" />
+        android:label="QuizSettings">
+        <action
+            android:id="@+id/action_quizSettongs_to_QuestionsList"
+            app:destination="@id/fragment_questions_list">
+<!--            <argument-->
+<!--                android:name="paramsList"-->
+<!--                android:defaultValue="@null"-->
+<!--                app:argType="com.wishnewjam.radiologytest.ui.settings.Params"-->
+<!--                app:nullable="true" />-->
+        </action>
+    </fragment>
 
     <!--    <fragment-->
     <!--        android:id="@+id/fragment_pushup"-->

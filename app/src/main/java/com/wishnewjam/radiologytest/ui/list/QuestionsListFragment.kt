@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.wishnewjam.radiologytest.R
 import com.wishnewjam.radiologytest.databinding.FragmentQuestionslistBinding
 import com.wishnewjam.radiologytest.db.QuestionsEntity
@@ -26,6 +27,8 @@ class QuestionsListFragment : Fragment() {
 
     private var navController: NavController? = null
 
+    val args: QuestionsListFragmentArgs by navArgs()
+
     private val viewModel: QuestionsListViewModel by viewModels {
         InjectorUtils.provideQuestionsListViewModelFactory(requireContext())
     }
@@ -34,13 +37,13 @@ class QuestionsListFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         val binding: FragmentQuestionslistBinding =
-                DataBindingUtil.inflate(inflater,
-                        R.layout.fragment_questionslist, container, false)
+                DataBindingUtil.inflate(inflater, R.layout.fragment_questionslist, container, false)
         val rootView = binding.root
         registerNavigation()
         binding.viewModel = viewModel
         val adapter = QuestionsListAdapter()
         rootView.rv_questions.adapter = adapter
+        viewModel.setParams(args.paramsList)
         viewModel.questions.observe(this, Observer<List<QuestionsEntity>> { it ->
             it?.let {
                 adapter.questions = it

@@ -1,7 +1,7 @@
 package com.wishnewjam.radiologytest.ui.settings
 
 class Param(val type: Int, val value: String) {
-    var checked = false
+    var checked = true
 
     companion object {
         const val TYPE_COMPLEXITY = 0

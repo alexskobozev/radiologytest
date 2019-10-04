@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
+import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import com.wishnewjam.radiologytest.R
 import com.wishnewjam.radiologytest.databinding.FragmentQuizsettingsBinding
@@ -33,8 +34,11 @@ class QuizSettingsFragment : Fragment() {
         val rootView = binding.root
         registerNavigation()
         binding.viewModel = viewModel
+        val actionQuizSettongsToQuestionsList =
+                QuizSettingsFragmentDirections.actionQuizSettongsToQuestionsList()
+        binding.questionsListDirection = actionQuizSettongsToQuestionsList
 
-        val adapter = CheckmarksAdapter()
+        val adapter = CheckmarksAdapter(viewModel)
         rootView.rv_quizparams.adapter = adapter
 
         viewModel.paramsLiveData.observe(this, Observer<List<Param>> { it ->
@@ -42,6 +46,14 @@ class QuizSettingsFragment : Fragment() {
                 adapter.checkBoxes = it
             }
         })
+
+        viewModel.checkedParamsLiveData.observe(this, Observer<Params> { it ->
+            it?.let {
+                actionQuizSettongsToQuestionsList.paramsList = it
+                binding.questionsListDirection = actionQuizSettongsToQuestionsList
+            }
+        })
+
         return rootView
     }
 
@@ -52,14 +64,14 @@ class QuizSettingsFragment : Fragment() {
 
     private fun registerNavigation() {
         viewModel.getNewDestination()
-                .observe(this, EventObserver(object : EventListener<Int> {
-                    override fun onEvent(t: Int) {
+                .observe(this, EventObserver(object : EventListener<NavDirections> {
+                    override fun onEvent(t: NavDirections) {
                         navigate(t)
                     }
                 }))
     }
 
-    private fun navigate(id: Int) {
-        navController?.navigate(id)
+    private fun navigate(navDirections: NavDirections) {
+        navController?.navigate(navDirections)
     }
 }
