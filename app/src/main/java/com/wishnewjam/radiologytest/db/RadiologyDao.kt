@@ -16,6 +16,12 @@ interface RadiologyDao {
     @Query("SELECT * FROM questionsentity WHERE question LIKE :search")
     fun getSearch(search: String): LiveData<List<QuestionsEntity>>
 
+    @Query("SELECT DISTINCT complexity FROM questionsentity ORDER BY complexity")
+    fun fetchAllComplexeties(): LiveData<List<Int?>>
+
+    @Query("SELECT DISTINCT themenumber FROM questionsentity ORDER BY themenumber")
+    fun fetchAllThemes(): LiveData<List<String?>>
+
     @Insert
     fun insertAll(vararg questionsEntity: QuestionsEntity)
 

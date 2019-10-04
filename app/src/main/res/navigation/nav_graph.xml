@@ -19,12 +19,12 @@
 
     <fragment
         android:id="@+id/fragment_questions_list"
-        android:name="com.wishnewjam.radiologytest.ui.QuestionsListFragment"
+        android:name="com.wishnewjam.radiologytest.ui.list.QuestionsListFragment"
         android:label="QuestionsList" />
 
     <fragment
         android:id="@+id/fragment_quiz_settings"
-        android:name="com.wishnewjam.radiologytest.ui.QuizSettingsFragment"
+        android:name="com.wishnewjam.radiologytest.ui.settings.QuizSettingsFragment"
         android:label="QuizSettings" />
 
     <!--    <fragment-->

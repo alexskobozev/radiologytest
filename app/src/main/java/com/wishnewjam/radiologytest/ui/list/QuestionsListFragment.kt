@@ -1,6 +1,6 @@
 @file:Suppress("UnusedImport")
 
-package com.wishnewjam.radiologytest.ui
+package com.wishnewjam.radiologytest.ui.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -13,7 +13,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import com.wishnewjam.radiologytest.QuestionsListAdapter
 import com.wishnewjam.radiologytest.R
 import com.wishnewjam.radiologytest.databinding.FragmentQuestionslistBinding
 import com.wishnewjam.radiologytest.db.QuestionsEntity

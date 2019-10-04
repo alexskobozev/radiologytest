@@ -1,12 +1,12 @@
-package com.wishnewjam.radiologytest
+package com.wishnewjam.radiologytest.ui.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
+import com.wishnewjam.radiologytest.R
 import com.wishnewjam.radiologytest.db.QuestionsEntity
-import com.wishnewjam.radiologytest.ui.QuestionsListViewHolder
 
 class QuestionsListAdapter : RecyclerView.Adapter<QuestionsListViewHolder>() {
 
@@ -19,7 +19,8 @@ class QuestionsListAdapter : RecyclerView.Adapter<QuestionsListViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuestionsListViewHolder {
         val layoutInflater: LayoutInflater = LayoutInflater.from(parent.context)
         val binding: ViewDataBinding =
-                DataBindingUtil.inflate(layoutInflater, R.layout.item_list_questions, parent, false)
+                DataBindingUtil.inflate(layoutInflater,
+                        R.layout.item_list_questions, parent, false)
         return QuestionsListViewHolder(binding)
     }
 

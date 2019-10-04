@@ -1,4 +1,4 @@
-package com.wishnewjam.radiologytest.ui
+package com.wishnewjam.radiologytest.ui.list
 
 import androidx.databinding.ViewDataBinding
 import androidx.databinding.library.baseAdapters.BR

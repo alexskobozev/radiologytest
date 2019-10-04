@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="4dp"
+        app:cardElevation="4dp"
+        app:cardMaxElevation="4dp">
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/item_checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="@{param.checked}"
+            android:text="@{param.value}" />
+    </androidx.cardview.widget.CardView>
+
+
+    <data>
+        <variable
+            name="param"
+            type="com.wishnewjam.radiologytest.ui.settings.Param" />
+    </data>
+</layout>

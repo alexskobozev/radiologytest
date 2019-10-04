@@ -5,11 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.wishnewjam.radiologytest.QuestionsRepository
+import com.wishnewjam.radiologytest.ui.settings.ParamsLiveData
 import com.wishnewjam.radiologytest.utilities.Event
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.cancel
 
-class QuizSettingsViewModel(private val trainRepository: QuestionsRepository) : ViewModel() {
+class QuizSettingsViewModel(trainRepository: QuestionsRepository) : ViewModel() {
+
+    var paramsLiveData =
+            ParamsLiveData(trainRepository.getAllComplexeties(), trainRepository.getAllThemes())
 
     @ExperimentalCoroutinesApi
     override fun onCleared() {

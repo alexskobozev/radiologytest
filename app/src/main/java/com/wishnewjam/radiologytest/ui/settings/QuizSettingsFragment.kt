@@ -1,4 +1,4 @@
-package com.wishnewjam.radiologytest.ui
+package com.wishnewjam.radiologytest.ui.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.wishnewjam.radiologytest.R
@@ -15,6 +16,7 @@ import com.wishnewjam.radiologytest.utilities.EventListener
 import com.wishnewjam.radiologytest.utilities.EventObserver
 import com.wishnewjam.radiologytest.utilities.InjectorUtils
 import com.wishnewjam.radiologytest.viewmodels.QuizSettingsViewModel
+import kotlinx.android.synthetic.main.fragment_quizsettings.view.*
 
 class QuizSettingsFragment : Fragment() {
 
@@ -32,6 +34,14 @@ class QuizSettingsFragment : Fragment() {
         registerNavigation()
         binding.viewModel = viewModel
 
+        val adapter = CheckmarksAdapter()
+        rootView.rv_quizparams.adapter = adapter
+
+        viewModel.paramsLiveData.observe(this, Observer<List<Param>> { it ->
+            it?.let {
+                adapter.checkBoxes = it
+            }
+        })
         return rootView
     }
 
