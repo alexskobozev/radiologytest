@@ -19,11 +19,22 @@ class QuestionsListViewModel(private val trainRepository: QuestionsRepository) :
     var filter: MutableLiveData<String> = MutableLiveData("")
 
     var questions: LiveData<List<QuestionsEntity>> = Transformations.switchMap(filter) { input ->
-        if (input.isNullOrEmpty()) {
-            trainRepository.getAllQuestions()
+        val params = paramsList
+        if (params == null) {
+            if (input.isNullOrEmpty()) {
+                trainRepository.getAllQuestions()
+            }
+            else {
+                trainRepository.getSearchQuestions("%$input%")
+            }
         }
         else {
-            trainRepository.getSearchQuestions("%$input%")
+            if (input.isNullOrEmpty()) {
+                trainRepository.getAllQuestionsWithParams(params)
+            }
+            else {
+                trainRepository.getSearchQuestionsWithParams("%$input%", params)
+            }
         }
     }
 

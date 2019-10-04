@@ -13,6 +13,6 @@ data class QuestionsEntity(
         @ColumnInfo(name = "var3") var var3: String?,
         @ColumnInfo(name = "var4") var var4: String?,
         @ColumnInfo(name = "var5") var var5: String?,
-        @ColumnInfo(name = "answer") var answer: Int?,
-        @ColumnInfo(name = "complexity") var complexity: Int?,
+        @ColumnInfo(name = "answer") var answer: Int,
+        @ColumnInfo(name = "complexity") var complexity: Int,
         @ColumnInfo(name = "themenumber") var themenumber: String?)

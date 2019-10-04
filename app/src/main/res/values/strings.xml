@@ -7,4 +7,5 @@
     <string name="title_questions_list">Questions list</string>
     <string name="title_quiz_settings">Choose by parameters</string>
     <string name="go">Go</string>
+    <string name="no_value">No value</string>
 </resources>

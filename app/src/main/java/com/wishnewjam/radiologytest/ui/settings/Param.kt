@@ -1,6 +1,6 @@
 package com.wishnewjam.radiologytest.ui.settings
 
-class Param(val type: Int, val value: String) {
+class Param(val type: Int, val value: String?) {
     var checked = true
 
     companion object {

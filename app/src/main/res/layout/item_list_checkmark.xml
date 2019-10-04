@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checked="@{param.checked}"
-            android:text="@{param.value}" />
+            android:text="@{param.value !=null ? param.value : @string/no_value}" />
     </androidx.cardview.widget.CardView>
 
 
