@@ -63,176 +63,67 @@
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/list_question_text_size" />
 
-
-                <LinearLayout
+                <RadioGroup
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:visibility="@{randomQuestion.var1 != null ? View.VISIBLE : View.GONE}">
+                    android:layout_height="wrap_content">
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/num1"
+                    <androidx.appcompat.widget.AppCompatRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:background="@{randomQuestion.answer == 1 ? @drawable/ring_green : @drawable/ring_red}"
-                        android:text="1"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/list_digit_size"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_question" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_ans1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="@dimen/list_text_start_margin"
+                        android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(1) : void}"
                         android:text="@{randomQuestion.var1}"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/list_answer_text_size" />
+                        android:visibility="@{randomQuestion.var1 != null ? View.VISIBLE : View.GONE}" />
 
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:visibility="@{randomQuestion.var2 != null ? View.VISIBLE : View.GONE}">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/num2"
+                    <androidx.appcompat.widget.AppCompatRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:background="@{randomQuestion.answer == 2 ? @drawable/ring_green : @drawable/ring_red}"
-                        android:text="2"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/list_digit_size"
-                        android:textStyle="bold" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_ans2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-
-                        android:layout_marginStart="@dimen/list_text_start_margin"
+                        android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(2) : void}"
                         android:text="@{randomQuestion.var2}"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/list_answer_text_size" />
+                        android:visibility="@{randomQuestion.var2 != null ? View.VISIBLE : View.GONE}" />
 
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:visibility="@{randomQuestion.var3 != null ? View.VISIBLE : View.GONE}">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/num3"
+                    <androidx.appcompat.widget.AppCompatRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:background="@{randomQuestion.answer == 3 ? @drawable/ring_green : @drawable/ring_red}"
-                        android:text="3"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/list_digit_size"
-                        android:textStyle="bold" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_ans3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-
-                        android:layout_marginStart="@dimen/list_text_start_margin"
+                        android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(3) : void}"
                         android:text="@{randomQuestion.var3}"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/list_answer_text_size"
-                        app:layout_constraintEnd_toEndOf="parent" />
+                        android:visibility="@{randomQuestion.var3 != null ? View.VISIBLE : View.GONE}" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:visibility="@{randomQuestion.var4 != null ? View.VISIBLE : View.GONE}">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/num4"
+                    <androidx.appcompat.widget.AppCompatRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:background="@{randomQuestion.answer == 4 ? @drawable/ring_green : @drawable/ring_red}"
-                        android:text="4"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/list_digit_size"
-                        android:textStyle="bold" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_ans4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="@dimen/list_text_start_margin"
+                        android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(4) : void}"
                         android:text="@{randomQuestion.var4}"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/list_answer_text_size" />
+                        android:visibility="@{randomQuestion.var4 != null ? View.VISIBLE : View.GONE}" />
 
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:visibility="@{randomQuestion.var5 != null ? View.VISIBLE : View.GONE}">
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/num5"
+                    <androidx.appcompat.widget.AppCompatRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:background="@{randomQuestion.answer == 5 ? @drawable/ring_green : @drawable/ring_red}"
-                        android:text="5"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/list_digit_size"
-                        android:textStyle="bold" />
-
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tv_ans5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="@dimen/list_text_start_margin"
+                        android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(5) : void}"
                         android:text="@{randomQuestion.var5}"
-                        android:textColor="@android:color/black"
-                        android:textSize="18sp" />
+                        android:visibility="@{randomQuestion.var5 != null ? View.VISIBLE : View.GONE}" />
 
-                </LinearLayout>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{viewModel.isAnswerRight() ? @string/right_answer : @string/wrong_answer}"
+                        android:textAlignment="center"
+                        android:textColor="@{viewModel.isAnswerRight() ? @color/right_answer_color : @color/wrong_answer_color}"
+                        android:textSize="32sp"
+                        android:visibility="@{viewModel.isAnswerRight() != null ? View.VISIBLE : View.GONE}" />
+                </RadioGroup>
+
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_refresh"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="56dp"
             android:onClick="@{() -> viewModel.randomizeQuestion()}"
             android:text="@string/refresh"
+            android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

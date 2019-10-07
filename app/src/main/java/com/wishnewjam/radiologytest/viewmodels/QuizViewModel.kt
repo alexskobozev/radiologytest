@@ -13,8 +13,9 @@ import kotlinx.coroutines.cancel
 class QuizViewModel(trainRepository: QuestionsRepository) : ViewModel() {
 
     var listOfQuestions: List<QuestionsEntity> = emptyList()
+    val randomQuesion = MutableLiveData<QuestionsEntity>()
+    val isAnswerRight: MutableLiveData<Boolean?> = MutableLiveData(null)
 
-    var randomQuesion = MutableLiveData<QuestionsEntity>()
     private var paramsList: Params? = null
 
     @ExperimentalCoroutinesApi
@@ -29,5 +30,11 @@ class QuizViewModel(trainRepository: QuestionsRepository) : ViewModel() {
 
     fun randomizeQuestion() {
         randomQuesion.value = listOfQuestions.random()
+    }
+
+    fun checkedAnswer(ans: Int) {
+        randomQuesion.value?.let {
+            isAnswerRight.postValue(ans == it.answer)
+        }
     }
 }
