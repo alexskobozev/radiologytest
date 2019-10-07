@@ -32,8 +32,9 @@ class MainFragment : Fragment() {
         registerNavigation()
         binding.viewModel = viewModel
         binding.questionsListDirection = MainFragmentDirections.actionMainFragmentToQuestionsList()
-        binding.quizSettingsDirection = MainFragmentDirections.actionMainFragmentToQuizSettings()
+        binding.quizSettingsDirection = MainFragmentDirections.actionMainFragmentToQuizSettingsList()
         binding.quizDirection = MainFragmentDirections.actionMainFragmentToQuiz()
+        binding.quizSettingsQuizDirection = MainFragmentDirections.actionMainFragmentToQuizSettingsQuiz()
         return rootView
     }
 

@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.wishnewjam.radiologytest.R
 import com.wishnewjam.radiologytest.databinding.FragmentQuizsettingsBinding
 import com.wishnewjam.radiologytest.utilities.EventListener
@@ -23,6 +24,8 @@ class QuizSettingsFragment : Fragment() {
 
     private var navController: NavController? = null
 
+    val args: QuizSettingsFragmentArgs by navArgs()
+
     private val viewModel: QuizSettingsViewModel by viewModels {
         InjectorUtils.provideQuizSettingsViewModelFactory(requireContext())
     }
@@ -34,9 +37,30 @@ class QuizSettingsFragment : Fragment() {
         val rootView = binding.root
         registerNavigation()
         binding.viewModel = viewModel
-        val actionQuizSettongsToQuestionsList =
-                QuizSettingsFragmentDirections.actionQuizSettongsToQuestionsList()
-        binding.questionsListDirection = actionQuizSettongsToQuestionsList
+        binding.lifecycleOwner = this
+
+        if (args.nextDestination == Destinations.QUIZ) {
+            val actionQuizSettongsToQuestionsList =
+                    QuizSettingsFragmentDirections.actionQuizSettongsToQuiz()
+            binding.questionsListDirection = actionQuizSettongsToQuestionsList
+            viewModel.checkedParamsLiveData.observe(this, Observer<Params> { it ->
+                it?.let {
+                    actionQuizSettongsToQuestionsList.paramsList = it
+                    binding.questionsListDirection = actionQuizSettongsToQuestionsList
+                }
+            })
+        }
+        else {
+            val actionQuizSettongsToQuestionsList =
+                    QuizSettingsFragmentDirections.actionQuizSettongsToQuestionsList()
+            binding.questionsListDirection = actionQuizSettongsToQuestionsList
+            viewModel.checkedParamsLiveData.observe(this, Observer<Params> { it ->
+                it?.let {
+                    actionQuizSettongsToQuestionsList.paramsList = it
+                    binding.questionsListDirection = actionQuizSettongsToQuestionsList
+                }
+            })
+        }
 
         val adapter = CheckmarksAdapter(viewModel)
         rootView.rv_quizparams.adapter = adapter
@@ -44,13 +68,6 @@ class QuizSettingsFragment : Fragment() {
         viewModel.paramsLiveData.observe(this, Observer<List<Param>> { it ->
             it?.let {
                 adapter.checkBoxes = it
-            }
-        })
-
-        viewModel.checkedParamsLiveData.observe(this, Observer<Params> { it ->
-            it?.let {
-                actionQuizSettongsToQuestionsList.paramsList = it
-                binding.questionsListDirection = actionQuizSettongsToQuestionsList
             }
         })
 

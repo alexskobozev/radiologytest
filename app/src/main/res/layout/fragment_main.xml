@@ -52,7 +52,7 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:onClick="@{() -> viewModel.setNewDestination(quizDirection.getActionId())}"
+            android:onClick="@{() -> viewModel.setNewDestination(quizSettingsQuizDirection.getActionId())}"
             android:text="@string/quiz_with_parameters"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_default="percent"
@@ -79,6 +79,10 @@
 
         <variable
             name="quizDirection"
+            type="androidx.navigation.NavDirections" />
+
+        <variable
+            name="quizSettingsQuizDirection"
             type="androidx.navigation.NavDirections" />
     </data>
 

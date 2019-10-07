@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.wishnewjam.radiologytest.R
 import com.wishnewjam.radiologytest.databinding.FragmentQuizBinding
 import com.wishnewjam.radiologytest.utilities.InjectorUtils
@@ -20,6 +21,8 @@ import com.wishnewjam.radiologytest.viewmodels.QuizViewModel
 class QuizFragment : Fragment() {
 
     private var navController: NavController? = null
+    val args: QuizFragmentArgs by navArgs()
+
     private val viewModel: QuizViewModel by viewModels {
         InjectorUtils.provideQuizViewModelFactory(requireContext())
     }
@@ -31,6 +34,7 @@ class QuizFragment : Fragment() {
         val rootView = binding.root
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        viewModel.paramsList.value = args.paramsList
         viewModel.allQuestions.observe(this, Observer {
             viewModel.listOfQuestions = it
             viewModel.randomizeQuestion()

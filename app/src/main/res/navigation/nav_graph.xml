@@ -11,13 +11,25 @@
         <action
             android:id="@+id/action_mainFragment_to_QuestionsList"
             app:destination="@id/fragment_questions_list" />
-
         <action
-            android:id="@+id/action_mainFragment_to_QuizSettings"
-            app:destination="@id/fragment_quiz_settings" />
+            android:id="@+id/action_mainFragment_to_QuizSettingsList"
+            app:destination="@id/fragment_quiz_settings">
+            <argument
+                android:name="nextDestination"
+                android:defaultValue="LIST"
+                app:argType="com.wishnewjam.radiologytest.ui.settings.Destinations" />
+        </action>
         <action
             android:id="@+id/action_mainFragment_to_Quiz"
             app:destination="@id/fragment_quiz" />
+        <action
+            android:id="@+id/action_mainFragment_to_QuizSettingsQuiz"
+            app:destination="@id/fragment_quiz_settings">
+            <argument
+                android:name="nextDestination"
+                android:defaultValue="QUIZ"
+                app:argType="com.wishnewjam.radiologytest.ui.settings.Destinations" />
+        </action>
     </fragment>
 
     <fragment
@@ -38,11 +50,24 @@
         <action
             android:id="@+id/action_quizSettongs_to_QuestionsList"
             app:destination="@id/fragment_questions_list" />
+        <action
+            android:id="@+id/action_quizSettongs_to_Quiz"
+            app:destination="@id/fragment_quiz" />
+        <argument
+            android:name="nextDestination"
+            android:defaultValue="LIST"
+            app:argType="com.wishnewjam.radiologytest.ui.settings.Destinations" />
     </fragment>
 
     <fragment
         android:id="@+id/fragment_quiz"
         android:name="com.wishnewjam.radiologytest.ui.QuizFragment"
-        android:label="QuizFragment" />
+        android:label="QuizFragment">
+        <argument
+            android:name="paramsList"
+            android:defaultValue="@null"
+            app:argType="com.wishnewjam.radiologytest.ui.settings.Params"
+            app:nullable="true" />
+    </fragment>
 
 </navigation>
