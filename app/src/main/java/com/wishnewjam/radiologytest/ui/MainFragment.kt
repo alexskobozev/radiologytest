@@ -26,16 +26,14 @@ class MainFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val binding: FragmentMainBinding =
-                DataBindingUtil.inflate(inflater,
-                        R.layout.fragment_main, container, false)
+                DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
         val rootView = binding.root
 
         registerNavigation()
         binding.viewModel = viewModel
-        binding.questionsListDirection =
-                MainFragmentDirections.actionMainFragmentToQuestionsList()
-        binding.quizSettingsDirection =
-                MainFragmentDirections.actionMainFragmentToQuizSettings()
+        binding.questionsListDirection = MainFragmentDirections.actionMainFragmentToQuestionsList()
+        binding.quizSettingsDirection = MainFragmentDirections.actionMainFragmentToQuizSettings()
+        binding.quizDirection = MainFragmentDirections.actionMainFragmentToQuiz()
         return rootView
     }
 

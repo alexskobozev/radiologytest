@@ -22,6 +22,7 @@ import com.wishnewjam.radiologytest.db.AppDatabase
 import com.wishnewjam.radiologytest.viewmodels.MainViewModelFactory
 import com.wishnewjam.radiologytest.viewmodels.QuestionsListViewModelFactory
 import com.wishnewjam.radiologytest.viewmodels.QuizSettingsViewModelFactory
+import com.wishnewjam.radiologytest.viewmodels.QuizViewModelFactory
 
 object InjectorUtils {
 
@@ -30,11 +31,6 @@ object InjectorUtils {
                 AppDatabase.getInstance(context.applicationContext).trainDao())
     }
 
-    //    fun providePushUpViewModelFactory(context: Context): PushUpViewModelFactory {
-//        val repository = getQuestionsRepository(context)
-//        return PushUpViewModelFactory(repository)
-//    }
-//
     fun provideQuestionsListViewModelFactory(context: Context): QuestionsListViewModelFactory {
         val repository = getQuestionsRepository(context)
         return QuestionsListViewModelFactory(repository)
@@ -43,6 +39,11 @@ object InjectorUtils {
     fun provideQuizSettingsViewModelFactory(context: Context): QuizSettingsViewModelFactory {
         val repository = getQuestionsRepository(context)
         return QuizSettingsViewModelFactory(repository)
+    }
+
+    fun provideQuizViewModelFactory(context: Context): QuizViewModelFactory {
+        val repository = getQuestionsRepository(context)
+        return QuizViewModelFactory(repository)
     }
 
     fun provideMainViewModelFactory(): MainViewModelFactory {

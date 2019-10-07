@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_mainFragment_to_QuizSettings"
             app:destination="@id/fragment_quiz_settings" />
+        <action
+            android:id="@+id/action_mainFragment_to_Quiz"
+            app:destination="@id/fragment_quiz" />
     </fragment>
 
     <fragment
@@ -34,27 +37,12 @@
         android:label="QuizSettings">
         <action
             android:id="@+id/action_quizSettongs_to_QuestionsList"
-            app:destination="@id/fragment_questions_list">
-<!--            <argument-->
-<!--                android:name="paramsList"-->
-<!--                android:defaultValue="@null"-->
-<!--                app:argType="com.wishnewjam.radiologytest.ui.settings.Params"-->
-<!--                app:nullable="true" />-->
-        </action>
+            app:destination="@id/fragment_questions_list" />
     </fragment>
 
-    <!--    <fragment-->
-    <!--        android:id="@+id/fragment_pushup"-->
-    <!--        android:name="com.wishnewjam.sfw.PushUpFragment"-->
-    <!--        android:label="PushUps">-->
-    <!--        <argument-->
-    <!--            android:name="trainType"-->
-    <!--            app:argType="com.wishnewjam.sfw.data.TrainProcess" />-->
-
-    <!--        &lt;!&ndash;<action&ndash;&gt;-->
-    <!--        &lt;!&ndash;android:id="@+id/action_navFragment_toBanner"&ndash;&gt;-->
-    <!--        &lt;!&ndash;app:destination="@id/banner_fragment" />&ndash;&gt;-->
-    <!--    </fragment>-->
-
+    <fragment
+        android:id="@+id/fragment_quiz"
+        android:name="com.wishnewjam.radiologytest.ui.QuizFragment"
+        android:label="QuizFragment" />
 
 </navigation>

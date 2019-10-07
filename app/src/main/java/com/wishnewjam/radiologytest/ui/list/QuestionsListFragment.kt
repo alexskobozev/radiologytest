@@ -43,7 +43,7 @@ class QuestionsListFragment : Fragment() {
         binding.viewModel = viewModel
         val adapter = QuestionsListAdapter()
         rootView.rv_questions.adapter = adapter
-        viewModel.setParams(args.paramsList)
+        viewModel.paramsList = args.paramsList
         viewModel.questions.observe(this, Observer<List<QuestionsEntity>> { it ->
             it?.let {
                 adapter.questions = it

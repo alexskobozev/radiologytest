@@ -14,7 +14,7 @@ import kotlinx.coroutines.cancel
 
 class QuestionsListViewModel(private val trainRepository: QuestionsRepository) : ViewModel() {
 
-    private var paramsList: Params? = null
+    var paramsList: Params? = null
 
     var filter: MutableLiveData<String> = MutableLiveData("")
 
@@ -56,9 +56,5 @@ class QuestionsListViewModel(private val trainRepository: QuestionsRepository) :
 
     fun searchForQuestion(query: String?) {
         filter.value = query
-    }
-
-    fun setParams(paramsList: Params?) {
-        this.paramsList = paramsList
     }
 }

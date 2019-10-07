@@ -13,6 +13,9 @@ interface RadiologyDao {
     @Query("SELECT * FROM questionsentity ORDER BY rowId")
     fun getAll(): LiveData<List<QuestionsEntity>>
 
+    @Query("SELECT * FROM questionsentity WHERE rowId IN (SELECT rowId FROM questionsentity ORDER BY RANDOM() LIMIT 1)")
+    fun getRandom(): LiveData<QuestionsEntity>
+
     @Query("SELECT * FROM questionsentity WHERE complexity IN (:complexity) AND themenumber IN (:themes)")
     fun getAllWithParams(complexity: List<Int>,
                          themes: List<String?>): LiveData<List<QuestionsEntity>>
