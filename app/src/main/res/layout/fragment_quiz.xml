@@ -18,120 +18,131 @@
             app:title="@string/title_quiz"
             app:titleTextColor="@android:color/white" />
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="4dp"
-            app:cardElevation="4dp"
-            app:cardMaxElevation="4dp"
+        <ScrollView
+            app:layout_constraintTop_toBottomOf="@+id/toolbar_quizsettings"
             app:layout_constraintBottom_toTopOf="@+id/btn_refresh"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_quizsettings">
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_knowledge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                app:knowledge="@{viewModel.randomQuestion.knowledgeValue}"
-                />
-
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_complexity"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:text="@{@string/complexity_label(viewModel.randomQuestion.complexity)}" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tv_theme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="2dp"
-                android:text="@{@string/theme_label(viewModel.randomQuestion.themenumber)}"
-                android:visibility="@{viewModel.randomQuestion.themenumber != null ? View.VISIBLE : View.GONE}" />
-
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_height="0dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="4dp"
+                app:cardMaxElevation="4dp"
+                app:layout_constraintBottom_toTopOf="@+id/btn_refresh"
+                app:contentPadding="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_quizsettings">
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tv_question"
+                    android:id="@+id/tv_knowledge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{viewModel.randomQuestion.question}"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/list_question_text_size" />
+                    android:layout_gravity="start"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    app:knowledge="@{viewModel.randomQuestion.knowledgeValue}" />
 
-                <RadioGroup
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_complexity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:text="@{@string/complexity_label(viewModel.randomQuestion.complexity)}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_theme"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="2dp"
+                    android:text="@{@string/theme_label(viewModel.randomQuestion.themenumber)}"
+                    android:visibility="@{viewModel.randomQuestion.themenumber != null ? View.VISIBLE : View.GONE}" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <androidx.appcompat.widget.AppCompatRadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(1) : void}"
-                        android:text="@{viewModel.randomQuestion.var1}"
-                        android:visibility="@{viewModel.randomQuestion.var1 != null ? View.VISIBLE : View.GONE}"
-                        app:clear="@{viewModel.isAnswerRight()}" />
-
-                    <androidx.appcompat.widget.AppCompatRadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(2) : void}"
-                        android:text="@{viewModel.randomQuestion.var2}"
-                        android:visibility="@{viewModel.randomQuestion.var2 != null ? View.VISIBLE : View.GONE}"
-                        app:clear="@{viewModel.isAnswerRight()}" />
-
-                    <androidx.appcompat.widget.AppCompatRadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(3) : void}"
-                        android:text="@{viewModel.randomQuestion.var3}"
-                        android:visibility="@{viewModel.randomQuestion.var3 != null ? View.VISIBLE : View.GONE}"
-                        app:clear="@{viewModel.isAnswerRight()}" />
-
-                    <androidx.appcompat.widget.AppCompatRadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(4) : void}"
-                        android:text="@{viewModel.randomQuestion.var4}"
-                        android:visibility="@{viewModel.randomQuestion.var4 != null ? View.VISIBLE : View.GONE}"
-                        app:clear="@{viewModel.isAnswerRight()}" />
-
-                    <androidx.appcompat.widget.AppCompatRadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(5) : void}"
-                        android:text="@{viewModel.randomQuestion.var5}"
-                        android:visibility="@{viewModel.randomQuestion.var5 != null ? View.VISIBLE : View.GONE}"
-                        app:clear="@{viewModel.isAnswerRight()}" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:padding="16dp">
 
                     <androidx.appcompat.widget.AppCompatTextView
-                        android:layout_width="match_parent"
+                        android:id="@+id/tv_question"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@{viewModel.isAnswerRight() ? @string/right_answer : @string/wrong_answer}"
-                        android:textAlignment="center"
-                        android:textColor="@{viewModel.isAnswerRight() ? @color/right_answer_color : @color/wrong_answer_color}"
-                        android:textSize="32sp"
-                        android:visibility="@{viewModel.isAnswerRight() != null ? View.VISIBLE : View.GONE}" />
-                </RadioGroup>
+                        android:text="@{viewModel.randomQuestion.question}"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/list_question_text_size" />
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(1) : void}"
+                            android:text="@{viewModel.randomQuestion.var1}"
+                            android:visibility="@{viewModel.randomQuestion.var1 != null ? View.VISIBLE : View.GONE}"
+                            app:clear="@{viewModel.isAnswerRight()}" />
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(2) : void}"
+                            android:text="@{viewModel.randomQuestion.var2}"
+                            android:visibility="@{viewModel.randomQuestion.var2 != null ? View.VISIBLE : View.GONE}"
+                            app:clear="@{viewModel.isAnswerRight()}" />
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(3) : void}"
+                            android:text="@{viewModel.randomQuestion.var3}"
+                            android:visibility="@{viewModel.randomQuestion.var3 != null ? View.VISIBLE : View.GONE}"
+                            app:clear="@{viewModel.isAnswerRight()}" />
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(4) : void}"
+                            android:text="@{viewModel.randomQuestion.var4}"
+                            android:visibility="@{viewModel.randomQuestion.var4 != null ? View.VISIBLE : View.GONE}"
+                            app:clear="@{viewModel.isAnswerRight()}" />
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(5) : void}"
+                            android:text="@{viewModel.randomQuestion.var5}"
+                            android:visibility="@{viewModel.randomQuestion.var5 != null ? View.VISIBLE : View.GONE}"
+                            app:clear="@{viewModel.isAnswerRight()}" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@{viewModel.isAnswerRight() ? @string/right_answer : @string/wrong_answer}"
+                            android:textAlignment="center"
+                            android:textColor="@{viewModel.isAnswerRight() ? @color/right_answer_color : @color/wrong_answer_color}"
+                            android:textSize="32sp"
+                            android:visibility="@{viewModel.isAnswerRight() != null ? View.VISIBLE : View.GONE}" />
+                    </RadioGroup>
 
 
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </ScrollView>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_refresh"

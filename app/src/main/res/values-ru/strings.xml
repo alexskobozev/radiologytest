@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Тест Рентгенология</string>
+    <string name="complexity_label">Сложность: %1$s</string>
+    <string name="knowledge_0">Знание: не знаю</string>
+    <string name="knowledge_1_3">Знание: знаю чуть</string>
+    <string name="knowledge_3_6">Знание: ну норм</string>
+    <string name="knowledge_6_9">Знание: знаю</string>
+    <string name="knowledge_awesome">Знание: от зубов отскакивает</string>
+    <string name="no_value">Ничего</string>
+    <string name="questions_list">Список вопросов</string>
+    <string name="quiz_started_with_less_learned">Тест, начиная от наименее изученных</string>
+    <string name="quiz_with_parameters">Тест с параметрами</string>
+    <string name="refresh">Следующий</string>
+    <string name="right_answer">Правильно!</string>
+    <string name="search">Поиск</string>
+    <string name="theme_label">Номер темы: %1$s</string>
+    <string name="title_questions_list">Список вопросов</string>
+    <string name="title_quiz">Тест</string>
+    <string name="title_quiz_settings">Выбор по параметрам</string>
+    <string name="value_label">Знание: %1$s</string>
+    <string name="wrong_answer">НЕПРАВИЛЬНО!</string>
+    <string name="go">Поехали</string>
+</resources>

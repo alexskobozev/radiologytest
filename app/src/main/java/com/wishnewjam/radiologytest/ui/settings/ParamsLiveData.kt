@@ -5,8 +5,8 @@ import androidx.lifecycle.MediatorLiveData
 
 class ParamsLiveData(complexities: LiveData<List<Param>>, themes: LiveData<List<Param>>) :
         MediatorLiveData<List<Param>>() {
-    private var firstDivider = Param(Param.TYPE_DIVIDER, "Complexeties")
-    private var secondDivider = Param(Param.TYPE_DIVIDER, "Themes")
+    private var firstDivider = Param(Param.TYPE_DIVIDER, "Сложности")
+    private var secondDivider = Param(Param.TYPE_DIVIDER, "Номера тем")
 
     init {
         addSource(complexities) {
