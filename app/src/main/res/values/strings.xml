@@ -12,4 +12,6 @@
     <string name="refresh">Next</string>
     <string name="right_answer">You right!</string>
     <string name="wrong_answer">WRONG!</string>
+    <string name="quiz_started_with_less_learned">Quiz, started with less learned</string>
+    <string name="quiz_with_parameters">Quiz with parameters</string>
 </resources>

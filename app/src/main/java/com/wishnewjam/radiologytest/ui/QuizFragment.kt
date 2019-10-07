@@ -1,18 +1,14 @@
 package com.wishnewjam.radiologytest.ui
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.RadioButton
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -37,9 +33,7 @@ class QuizFragment : Fragment() {
         binding.lifecycleOwner = this
         viewModel.allQuestions.observe(this, Observer {
             viewModel.listOfQuestions = it
-        })
-        viewModel.randomQuesion.observe(this, Observer {
-            binding.randomQuestion = it
+            viewModel.randomizeQuestion()
         })
         return rootView
     }
@@ -50,14 +44,12 @@ class QuizFragment : Fragment() {
     }
 
     companion object {
-        @BindingAdapter("app:setRight")
+        @BindingAdapter("app:clear")
         @JvmStatic
-        fun setRight(tv: TextView, isRight: LiveData<Boolean>) {
-            isRight.value?.let {
-                tv.visibility = VISIBLE
-                tv.setTextColor(if (it) Color.GREEN else Color.RED)
-            } ?: kotlin.run { tv.visibility = GONE }
+        fun clear(rb: RadioButton, b: Boolean?) {
+            if (b == null) {
+                rb.isChecked = false
+            }
         }
     }
-
 }

@@ -20,7 +20,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_margin="8dp"
             app:cardCornerRadius="4dp"
             app:cardElevation="4dp"
@@ -37,7 +37,7 @@
                 android:layout_gravity="end"
                 android:layout_marginTop="2dp"
                 android:layout_marginEnd="2dp"
-                android:text="@{@string/complexity_label(randomQuestion.complexity)}" />
+                android:text="@{@string/complexity_label(viewModel.randomQuestion.complexity)}" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_theme"
@@ -46,12 +46,13 @@
                 android:layout_gravity="bottom|end"
                 android:layout_marginTop="2dp"
                 android:layout_marginEnd="2dp"
-                android:text="@{@string/theme_label(randomQuestion.themenumber)}"
-                android:visibility="@{randomQuestion.themenumber != null ? View.VISIBLE : View.GONE}" />
+                android:text="@{@string/theme_label(viewModel.randomQuestion.themenumber)}"
+                android:visibility="@{viewModel.randomQuestion.themenumber != null ? View.VISIBLE : View.GONE}" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:orientation="vertical"
                 android:padding="16dp">
 
@@ -59,7 +60,7 @@
                     android:id="@+id/tv_question"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{randomQuestion.question}"
+                    android:text="@{viewModel.randomQuestion.question}"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/list_question_text_size" />
 
@@ -71,36 +72,41 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(1) : void}"
-                        android:text="@{randomQuestion.var1}"
-                        android:visibility="@{randomQuestion.var1 != null ? View.VISIBLE : View.GONE}" />
+                        android:text="@{viewModel.randomQuestion.var1}"
+                        android:visibility="@{viewModel.randomQuestion.var1 != null ? View.VISIBLE : View.GONE}"
+                        app:clear="@{viewModel.isAnswerRight()}" />
 
                     <androidx.appcompat.widget.AppCompatRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(2) : void}"
-                        android:text="@{randomQuestion.var2}"
-                        android:visibility="@{randomQuestion.var2 != null ? View.VISIBLE : View.GONE}" />
+                        android:text="@{viewModel.randomQuestion.var2}"
+                        android:visibility="@{viewModel.randomQuestion.var2 != null ? View.VISIBLE : View.GONE}"
+                        app:clear="@{viewModel.isAnswerRight()}" />
 
                     <androidx.appcompat.widget.AppCompatRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(3) : void}"
-                        android:text="@{randomQuestion.var3}"
-                        android:visibility="@{randomQuestion.var3 != null ? View.VISIBLE : View.GONE}" />
+                        android:text="@{viewModel.randomQuestion.var3}"
+                        android:visibility="@{viewModel.randomQuestion.var3 != null ? View.VISIBLE : View.GONE}"
+                        app:clear="@{viewModel.isAnswerRight()}" />
 
                     <androidx.appcompat.widget.AppCompatRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(4) : void}"
-                        android:text="@{randomQuestion.var4}"
-                        android:visibility="@{randomQuestion.var4 != null ? View.VISIBLE : View.GONE}" />
+                        android:text="@{viewModel.randomQuestion.var4}"
+                        android:visibility="@{viewModel.randomQuestion.var4 != null ? View.VISIBLE : View.GONE}"
+                        app:clear="@{viewModel.isAnswerRight()}" />
 
                     <androidx.appcompat.widget.AppCompatRadioButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:onCheckedChanged="@{(cb, isChecked) -> isChecked ? viewModel.checkedAnswer(5) : void}"
-                        android:text="@{randomQuestion.var5}"
-                        android:visibility="@{randomQuestion.var5 != null ? View.VISIBLE : View.GONE}" />
+                        android:text="@{viewModel.randomQuestion.var5}"
+                        android:visibility="@{viewModel.randomQuestion.var5 != null ? View.VISIBLE : View.GONE}"
+                        app:clear="@{viewModel.isAnswerRight()}" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:layout_width="match_parent"
@@ -121,9 +127,9 @@
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"
             android:layout_height="56dp"
+            android:layout_marginBottom="32dp"
             android:onClick="@{() -> viewModel.randomizeQuestion()}"
             android:text="@string/refresh"
-            android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -133,10 +139,6 @@
     <data>
 
         <import type="android.view.View" />
-
-        <variable
-            name="randomQuestion"
-            type="com.wishnewjam.radiologytest.db.QuestionsEntity" />
 
         <variable
             name="viewModel"

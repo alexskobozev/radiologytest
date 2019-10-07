@@ -8,8 +8,9 @@
         android:orientation="vertical">
 
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_go_questions_list"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:onClick="@{() -> viewModel.setNewDestination(questionsListDirection.getActionId())}"
@@ -20,8 +21,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_go_quiz_settings"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:onClick="@{() -> viewModel.setNewDestination(quizSettingsDirection.getActionId())}"
@@ -32,17 +34,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_go_questions_list" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_go_quiz"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:onClick="@{() -> viewModel.setNewDestination(quizDirection.getActionId())}"
-            android:text="@string/title_quiz_settings"
+            android:text="@string/quiz_started_with_less_learned"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_default="percent"
             app:layout_constraintHeight_percent="0.25"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_go_quiz_settings" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_go_quiz_with_params"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:onClick="@{() -> viewModel.setNewDestination(quizDirection.getActionId())}"
+            android:text="@string/quiz_with_parameters"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_default="percent"
+            app:layout_constraintHeight_percent="0.25"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_go_quiz" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

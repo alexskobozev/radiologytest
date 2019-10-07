@@ -13,7 +13,7 @@ import kotlinx.coroutines.cancel
 class QuizViewModel(trainRepository: QuestionsRepository) : ViewModel() {
 
     var listOfQuestions: List<QuestionsEntity> = emptyList()
-    val randomQuesion = MutableLiveData<QuestionsEntity>()
+    val randomQuestion = MutableLiveData<QuestionsEntity>()
     val isAnswerRight: MutableLiveData<Boolean?> = MutableLiveData(null)
 
     private var paramsList: Params? = null
@@ -29,11 +29,12 @@ class QuizViewModel(trainRepository: QuestionsRepository) : ViewModel() {
     } ?: run { trainRepository.getAllQuestions() }
 
     fun randomizeQuestion() {
-        randomQuesion.value = listOfQuestions.random()
+        isAnswerRight.value = null
+        randomQuestion.value = listOfQuestions.random()
     }
 
     fun checkedAnswer(ans: Int) {
-        randomQuesion.value?.let {
+        randomQuestion.value?.let {
             isAnswerRight.postValue(ans == it.answer)
         }
     }
