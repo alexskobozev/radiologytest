@@ -37,7 +37,7 @@ class QuizFragment : Fragment() {
         viewModel.paramsList.value = args.paramsList
         viewModel.allQuestions.observe(this, Observer {
             viewModel.listOfQuestions = it
-            viewModel.randomizeQuestion()
+            viewModel.init()
         })
         return rootView
     }

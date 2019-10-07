@@ -9,9 +9,11 @@ import com.wishnewjam.radiologytest.QuestionsRepository
 import com.wishnewjam.radiologytest.db.QuestionsEntity
 import com.wishnewjam.radiologytest.ui.settings.Params
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 
-class QuizViewModel(trainRepository: QuestionsRepository) : ViewModel() {
+class QuizViewModel(val trainRepository: QuestionsRepository) : ViewModel() {
 
     var listOfQuestions: List<QuestionsEntity> = emptyList()
     val randomQuestion = MutableLiveData<QuestionsEntity>()
@@ -28,21 +30,33 @@ class QuizViewModel(trainRepository: QuestionsRepository) : ViewModel() {
     var allQuestions: LiveData<List<QuestionsEntity>> =
             Transformations.switchMap(paramsList) { input ->
                 if (input == null) {
-                    trainRepository.getAllQuestions()
+                    trainRepository.getAllQuestionsByKnowledge()
                 }
                 else {
-                    trainRepository.getAllQuestionsWithParams(input)
+                    trainRepository.getAllQuestionsWithParamsByKnow(input)
                 }
             }
 
     fun randomizeQuestion() {
         isAnswerRight.value = null
-        randomQuestion.value = listOfQuestions.random()
+        randomQuestion.value = listOfQuestions.first()
     }
 
     fun checkedAnswer(ans: Int) {
         randomQuestion.value?.let {
-            isAnswerRight.postValue(ans == it.answer)
+            val right = ans == it.answer
+            isAnswerRight.postValue(right)
+            if (right) {
+                GlobalScope.launch {
+                    trainRepository.updateKnowledge(it.num, it.knowledgeValue?.plus(1) ?: 1)
+                }
+            }
+        }
+    }
+
+    fun init() {
+        if (randomQuestion.value == null) {
+            randomizeQuestion()
         }
     }
 }

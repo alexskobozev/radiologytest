@@ -1,23 +1,28 @@
 package com.wishnewjam.radiologytest
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.switchMap
-import com.wishnewjam.radiologytest.db.QuestionsEntity
 import com.wishnewjam.radiologytest.db.RadiologyDao
 import com.wishnewjam.radiologytest.ui.settings.Param
 import com.wishnewjam.radiologytest.ui.settings.Params
+import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.withContext
 
 class QuestionsRepository private constructor(private val radiologyDao: RadiologyDao) {
 
     fun getAllQuestions() = radiologyDao.getAll()
 
-    fun callForRandomQuestion() = radiologyDao.getRandom()
+    fun getAllQuestionsByKnowledge() = radiologyDao.getAllByKnow()
 
     fun getSearchQuestions(search: String) = radiologyDao.getSearch(search)
 
     fun getAllQuestionsWithParams(params: Params) =
             radiologyDao.getAllWithParams(params.complexities?.map { it.toInt() } ?: emptyList(),
+                    params.themes ?: emptyList())
+
+    fun getAllQuestionsWithParamsByKnow(params: Params) =
+            radiologyDao.getAllWithParamsByKnow(params.complexities?.map { it.toInt() } ?:
+            emptyList(),
                     params.themes ?: emptyList())
 
     fun getSearchQuestionsWithParams(search: String, params: Params) =
@@ -33,8 +38,10 @@ class QuestionsRepository private constructor(private val radiologyDao: Radiolog
         MutableLiveData<List<Param>>(list.map { Param(Param.TYPE_THEME, it) })
     }
 
-    fun callForRandomQuestion(it: String): LiveData<QuestionsEntity> {
-        return radiologyDao.getRandom()
+    suspend fun updateKnowledge(id: Int, newKnowledge: Int) {
+        withContext(IO){
+            radiologyDao.updateKnowledge(id,newKnowledge)
+        }
     }
 
     companion object {

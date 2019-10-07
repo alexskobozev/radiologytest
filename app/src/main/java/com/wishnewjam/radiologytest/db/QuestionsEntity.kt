@@ -15,4 +15,5 @@ data class QuestionsEntity(
         @ColumnInfo(name = "var5") var var5: String?,
         @ColumnInfo(name = "answer") var answer: Int,
         @ColumnInfo(name = "complexity") var complexity: Int,
-        @ColumnInfo(name = "themenumber") var themenumber: String?)
+        @ColumnInfo(name = "themenumber") var themenumber: String?,
+        @ColumnInfo(name = "knowvalue") var knowledgeValue: Int?)

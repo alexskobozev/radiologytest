@@ -13,12 +13,19 @@ interface RadiologyDao {
     @Query("SELECT * FROM questionsentity ORDER BY rowId")
     fun getAll(): LiveData<List<QuestionsEntity>>
 
+    @Query("SELECT * FROM questionsentity ORDER BY knowvalue ASC")
+    fun getAllByKnow(): LiveData<List<QuestionsEntity>>
+
     @Query("SELECT * FROM questionsentity WHERE rowId IN (SELECT rowId FROM questionsentity ORDER BY RANDOM() LIMIT 1)")
     fun getRandom(): LiveData<QuestionsEntity>
 
     @Query("SELECT * FROM questionsentity WHERE complexity IN (:complexity) AND themenumber IN (:themes)")
     fun getAllWithParams(complexity: List<Int>,
                          themes: List<String?>): LiveData<List<QuestionsEntity>>
+
+    @Query("SELECT * FROM questionsentity WHERE complexity IN (:complexity) AND themenumber IN (:themes) ORDER BY knowvalue ASC")
+    fun getAllWithParamsByKnow(complexity: List<Int>,
+                               themes: List<String?>): LiveData<List<QuestionsEntity>>
 
     @Query("SELECT * FROM questionsentity WHERE question LIKE :search")
     fun getSearch(search: String): LiveData<List<QuestionsEntity>>
@@ -33,6 +40,9 @@ interface RadiologyDao {
     @Query("SELECT DISTINCT themenumber FROM questionsentity ORDER BY themenumber")
     fun fetchAllThemes(): LiveData<List<String?>>
 
+    @Query("UPDATE questionsentity SET knowvalue = :newKnowledge WHERE num = :id")
+    fun updateKnowledge(id: Int, newKnowledge: Int)
+
     @Insert
     fun insertAll(vararg questionsEntity: QuestionsEntity)
 
@@ -44,4 +54,5 @@ interface RadiologyDao {
 
     @Delete
     fun delete(questionsEntity: QuestionsEntity)
+
 }
