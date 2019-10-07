@@ -15,4 +15,10 @@
     <string name="wrong_answer">WRONG!</string>
     <string name="quiz_started_with_less_learned">Quiz, started with less learned</string>
     <string name="quiz_with_parameters">Quiz with parameters</string>
+
+    <string name="knowledge_0">Knowledge: Don\'t know</string>
+    <string name="knowledge_1_3">Knowledge: Know a little</string>
+    <string name="knowledge_3_6">Knowledge: Know so-so</string>
+    <string name="knowledge_6_9">Knowledge: Know</string>
+    <string name="knowledge_awesome">Knowledge: Know very good</string>
 </resources>

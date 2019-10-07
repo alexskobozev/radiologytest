@@ -47,10 +47,21 @@ class QuizViewModel(val trainRepository: QuestionsRepository) : ViewModel() {
             val right = ans == it.answer
             isAnswerRight.postValue(right)
             if (right) {
-                GlobalScope.launch {
-                    trainRepository.updateKnowledge(it.num, it.knowledgeValue?.plus(1) ?: 1)
-                }
+                updateKnowledge(it, 1)
             }
+            else {
+                updateKnowledge(it, -3)
+            }
+        }
+    }
+
+    private fun updateKnowledge(entity: QuestionsEntity, difference: Int) {
+        GlobalScope.launch {
+            var newValue = 0
+            ((entity.knowledgeValue ?: 0) + difference).let {
+                if (it > 0) newValue = it
+            }
+            trainRepository.updateKnowledge(entity.num, newValue)
         }
     }
 

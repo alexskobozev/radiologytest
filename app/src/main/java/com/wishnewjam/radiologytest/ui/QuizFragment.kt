@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
+import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -54,6 +55,35 @@ class QuizFragment : Fragment() {
             if (b == null) {
                 rb.isChecked = false
             }
+        }
+
+        @BindingAdapter("app:knowledge")
+        @JvmStatic
+        fun knowledge(tv: TextView, know: Int?) {
+            val s: String
+            val color: Int
+            if (know == null || know == 0) {
+                s = tv.resources.getString(R.string.knowledge_0)
+                color = tv.resources.getColor(R.color.knowledge_0, null)
+            }
+            else if (know < 4) {
+                s = tv.resources.getString(R.string.knowledge_1_3)
+                color = tv.resources.getColor(R.color.knowledge_1_3, null)
+            }
+            else if (know < 7) {
+                s = tv.resources.getString(R.string.knowledge_3_6)
+                color = tv.resources.getColor(R.color.knowledge_3_6, null)
+            }
+            else if (know < 10) {
+                s = tv.resources.getString(R.string.knowledge_6_9)
+                color = tv.resources.getColor(R.color.knowledge_6_9, null)
+            }
+            else {
+                s = tv.resources.getString(R.string.knowledge_awesome)
+                color = tv.resources.getColor(R.color.knowledge_master, null)
+            }
+            tv.text = s
+            tv.setTextColor(color)
         }
     }
 }

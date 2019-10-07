@@ -5,4 +5,10 @@
     <color name="colorAccent">#F4511E</color>
     <color name="right_answer_color">#43A047</color>
     <color name="wrong_answer_color">#E53935</color>
+
+    <color name="knowledge_0">#E53935</color>
+    <color name="knowledge_1_3">#FB8C00</color>
+    <color name="knowledge_3_6">#FDD835</color>
+    <color name="knowledge_6_9">#7CB342</color>
+    <color name="knowledge_master">#00897B</color>
 </resources>
