@@ -14,6 +14,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.wishnewjam.radiologytest.R
 import com.wishnewjam.radiologytest.databinding.FragmentQuizBinding
 import com.wishnewjam.radiologytest.utilities.InjectorUtils
@@ -46,6 +47,8 @@ class QuizFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = view.findNavController()
+        FirebaseAnalytics.getInstance(requireActivity())
+                .setCurrentScreen(requireActivity(), javaClass.simpleName, null)
     }
 
     companion object {

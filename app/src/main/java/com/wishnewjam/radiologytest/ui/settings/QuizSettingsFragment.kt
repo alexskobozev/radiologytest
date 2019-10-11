@@ -12,6 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavDirections
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.firebase.analytics.FirebaseAnalytics
 import com.wishnewjam.radiologytest.R
 import com.wishnewjam.radiologytest.databinding.FragmentQuizsettingsBinding
 import com.wishnewjam.radiologytest.utilities.EventListener
@@ -77,6 +78,9 @@ class QuizSettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = view.findNavController()
+        FirebaseAnalytics.getInstance(requireActivity())
+                .setCurrentScreen(requireActivity(),
+                        "${javaClass.simpleName}_${args.nextDestination}", null)
     }
 
     private fun registerNavigation() {

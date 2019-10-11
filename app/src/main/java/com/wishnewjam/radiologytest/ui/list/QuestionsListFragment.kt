@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -14,6 +15,8 @@ import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.wishnewjam.radiologytest.R
 import com.wishnewjam.radiologytest.databinding.FragmentQuestionslistBinding
 import com.wishnewjam.radiologytest.db.QuestionsEntity
@@ -40,6 +43,7 @@ class QuestionsListFragment : Fragment() {
                 DataBindingUtil.inflate(inflater, R.layout.fragment_questionslist, container, false)
         val rootView = binding.root
         registerNavigation()
+        binding.lifecycleOwner = this
         binding.viewModel = viewModel
         val adapter = QuestionsListAdapter()
         rootView.rv_questions.adapter = adapter
@@ -47,6 +51,7 @@ class QuestionsListFragment : Fragment() {
         viewModel.questions.observe(this, Observer<List<QuestionsEntity>> { it ->
             it?.let {
                 adapter.questions = it
+                viewModel.restorePosition(requireActivity())
             }
         })
         (requireActivity() as AppCompatActivity).setSupportActionBar(rootView.toolbar_questionsList)
@@ -67,6 +72,16 @@ class QuestionsListFragment : Fragment() {
         return rootView
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        (view?.rv_questions?.layoutManager as LinearLayoutManager?)?.findFirstVisibleItemPosition()
+                ?.let {
+                    if (it >= 0) {
+                        viewModel.saveCurrentPosition(it, requireContext())
+                    }
+                }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = view.findNavController()
@@ -83,5 +98,15 @@ class QuestionsListFragment : Fragment() {
 
     private fun navigate(id: Int) {
         navController?.navigate(id)
+    }
+
+    companion object {
+        @BindingAdapter("app:adapterPosition")
+        @JvmStatic
+        fun adapterPosition(rv: RecyclerView, i: Int?) {
+            if (i != null && i > 0 && rv.adapter?.itemCount ?: -1 > i) {
+                rv.scrollToPosition(i)
+            }
+        }
     }
 }
